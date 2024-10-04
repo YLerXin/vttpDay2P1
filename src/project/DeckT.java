@@ -1,4 +1,6 @@
 package project;
+//DeckT more closely align to what the professor does whereas Deck is the one I wrote
+import java.util.Random;
 
 public class DeckT {
 
@@ -26,6 +28,18 @@ public class DeckT {
         }
 
     }
+//DeckT deck = new DeckT();
+    public Card[] shuffle(){
+
+        Random rand = new Random();
+        for (int i = 0; i < cards.length; i++) {
+                int randomIndexToSwap = rand.nextInt(52); // choose a rand num from 0 to 51 i guess
+                Card temp = cards[randomIndexToSwap];
+                cards[randomIndexToSwap] = cards[i];
+                cards[i] = temp;
+            }
+        return cards;
+    }
 
     public Card get(){
         return this.cards[0];
@@ -33,7 +47,9 @@ public class DeckT {
     public Card get(int pos){
         return this.cards[pos];
     }
-
+    public Card[] getDeck() {
+        return this.cards;  // Returns the deck (the array of cards)
+    }
     @Override
     public String toString(){
         return "Number of cards: %d".formatted(cards.length);
